@@ -9,7 +9,7 @@
     
     <scm>
         <connection>Test</connection>
-        <url>scm:git:git@github.com:fjic/tests.git</url>
+        <url>scm:git:https://github.com/fjic/tests.git</url>
     </scm>
     
     <properties>
