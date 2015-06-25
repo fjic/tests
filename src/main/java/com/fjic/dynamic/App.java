@@ -17,7 +17,7 @@ import quickfix.mina.acceptor.AcceptorSessionProvider;
  * Main class.
  * @author fibarra
  */
-public final class App {
+public final class App {<
     /**
      * FIX Acceptor.
      */
