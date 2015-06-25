@@ -12,6 +12,14 @@
         <url>https://github.com/fjic/tests.git</url>
     </scm>
     
+    <developers>
+        <developer>
+            <id>fibarra</id>
+            <name>Javier Ibarra</name>
+            <email>fco.ibarra.caballero@gmail.com</email>
+        </developer>
+    </developers>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
