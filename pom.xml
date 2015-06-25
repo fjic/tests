@@ -8,8 +8,8 @@
     <name>DynamicGate</name>
     
     <scm>
-        <connection>Test</connection>
-        <url>scm:git:https://github.com/fjic/tests.git</url>
+        <connection>scm:git:git@github.com:fjic/tests.git</connection>
+        <url>https://github.com/fjic/tests.git</url>
     </scm>
     
     <properties>
