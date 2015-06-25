@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <import resource="std.xml" />
+    <!-- import resource="db.xml" / -->
+    
+    <bean id="settings" class="quickfix.SessionSettings">
+        <constructor-arg type="java.lang.String" value="config/fixgateway.cfg" />
+    </bean>
+    
+    <bean id="storeFactory" class="quickfix.FileStoreFactory">
+        <constructor-arg ref="settings" />
+    </bean>
+    
+    <bean id="logFactory" class="quickfix.FileLogFactory">
+        <constructor-arg ref="settings" />
+    </bean>
+    
+    <bean id="messageFactory" class="quickfix.DefaultMessageFactory" />
+    
+    <bean id="jmxExporter" class="org.quickfixj.jmx.JmxExporter" />
+    
+    <bean id="fixApplication" class="com.fjic.dynamic.MDGateway" />
+    
+    <bean id="acceptor" class="quickfix.SocketAcceptor">
+        <constructor-arg ref="fixApplication" />
+        <constructor-arg ref="storeFactory" />
+        <constructor-arg ref="settings" />
+        <constructor-arg ref="logFactory" />
+        <constructor-arg ref="messageFactory" />
+    </bean>
+    
+    <bean id="sessionProvider" class="com.fjic.dynamic.SesionProvider">
+        <constructor-arg ref="fixApplication" />
+        <constructor-arg ref="storeFactory" />
+        <constructor-arg ref="logFactory" />
+        <property name="jmxExporter" ref="jmxExporter" />
+    </bean>
+    
+    <bean id="app" class="com.fjic.dynamic.App">
+        <property name="acceptor" ref="acceptor" />
+        <property name="sessionProvider" ref="sessionProvider" />
+        <property name="jmxExporter" ref="jmxExporter" />
+    </bean>
+</beans>

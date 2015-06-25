@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Dspring.file=file:config/mexdermd.xml -Dlogback.configurationFile=file:config/logback.xml -server -Xms512m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:+UseParNewGC -XX:MaxTenuringThreshold=2 -XX:SurvivorRatio=8 -XX:+UnlockDiagnosticVMOptions -XX:+UseConcMarkSweepGC -XX:+ParallelRefProcEnabled -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:+UseCMSInitiatingOccupancyOnly -classpath %classpath com.fjic.dynamic.App</exec.args>
+                <exec.executable>java</exec.executable>
+                <exec.workingdir>target/classes</exec.workingdir>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -Dspring.file=file:config/mexdermd.xml -Dlogback.configurationFile=file:config/logback.xml -server -Xms512m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:+UseParNewGC -XX:MaxTenuringThreshold=2 -XX:SurvivorRatio=8 -XX:+UnlockDiagnosticVMOptions -XX:+UseConcMarkSweepGC -XX:+ParallelRefProcEnabled -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:+UseCMSInitiatingOccupancyOnly -classpath %classpath com.fjic.dynamic.App</exec.args>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+                <exec.workingdir>target/classes</exec.workingdir>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Dspring.file=file:config/mexdermd.xml -Dlogback.configurationFile=file:config/logback.xml -server -Xms512m -Xmx512m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:+UseParNewGC -XX:MaxTenuringThreshold=2 -XX:SurvivorRatio=8 -XX:+UnlockDiagnosticVMOptions -XX:+UseConcMarkSweepGC -XX:+ParallelRefProcEnabled -XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:+UseCMSInitiatingOccupancyOnly -classpath %classpath com.fjic.dynamic.App</exec.args>
+                <exec.executable>java</exec.executable>
+                <exec.workingdir>target/classes</exec.workingdir>
+                
+            </properties>
+        </action>
+    </actions>
