@@ -11,7 +11,6 @@ import quickfix.FieldNotFound;
 import quickfix.IncorrectDataFormat;
 import quickfix.IncorrectTagValue;
 import quickfix.Message;
-import quickfix.fix50.MessageCracker;
 import quickfix.RejectLogon;
 import quickfix.SessionID;
 import quickfix.UnsupportedMessageType;
@@ -52,24 +51,29 @@ public final class MDGateway implements Application, InitializingBean {
     @Override
     public void onLogon(final SessionID sid) {
         activeSessions.add(sid);
+        log.info(sid.toString());
     }
 
     @Override
     public void onLogout(final SessionID sid) {
         activeSessions.remove(sid);
+        log.info(sid.toString());
     }
 
     @Override
     public void toAdmin(final Message msg, final SessionID sid) {
+        log.info(sid.toString());
     }
 
     @Override
     public void fromAdmin(final Message msg, final SessionID sid) 
             throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, RejectLogon {
+        log.info(sid.toString());
     }
 
     @Override
     public void toApp(final Message msg, final SessionID sid) throws DoNotSend {
+        log.info(sid.toString());
     }
 
     @Override
